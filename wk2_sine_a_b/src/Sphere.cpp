@@ -14,9 +14,10 @@ void Sphere::setup(){
     yPos = 0;
     zPos = 0;
     
-    numParticles = 10;
+    numParticles = 10.0;
     currentR = 0;
     maxR = 300;
+    radius = 10;
     
 }
 
@@ -28,6 +29,7 @@ void Sphere::update(){
 	float sinOfTimeMapped = ofMap( sinOfTime, -1, 1, 0, maxR);
     
     currentR = sinOfTimeMapped;
+    radius = 10;
     xRot += dxRot;
     yRot += dyRot;
     zRot += dzRot;    
@@ -45,7 +47,11 @@ void Sphere::draw(){
     ofSetColor(255, 255, 255);
     for(int i=0; i<numParticles+1; i++){
         ofPushMatrix();
-        ofEllipse(currentR*cos((360/numParticles)*i), currentR*sin((360/numParticles)*i), 10, 10); //how could I get these disks to face the camera despite being in their rotated position?
+        ofTranslate(currentR*cos((360/numParticles)*i), currentR*sin((360/numParticles)*i));
+        ofRotateX(-xRot);
+        ofRotateY(-yRot);
+        ofRotateZ(-zRot);
+        ofEllipse(0, 0, radius, radius); //how could I get these disks to face the camera despite being in their rotated position?
         ofPopMatrix();
     }
     

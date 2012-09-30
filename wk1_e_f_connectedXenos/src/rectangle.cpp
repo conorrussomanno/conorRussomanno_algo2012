@@ -2,22 +2,20 @@
 
 
 //------------------------------------------------------------------
-void rectangle::setup(int red, int green, int blue){
-    pos.x = ofGetWidth()/2;
-    pos.y = ofGetHeight()/2;
-    rectColor.r = red;
-    rectColor.g = green;
-    rectColor.b = blue;
-    
+rectangle::rectangle(){
+	catchUpSpeed = 0.03f;
 }
 
 //------------------------------------------------------------------
 void rectangle::draw() {
 	ofFill();
 	ofSetRectMode(OF_RECTMODE_CENTER); // center around the position
-    ofSetColor(rectColor);
+    ofSetColor(198,246,55);
     ofRect(pos.x, pos.y, 20,20);
 }
 
-
 //------------------------------------------------------------------
+void rectangle::xenoToPoint(float catchX, float catchY){
+	pos.x = catchUpSpeed * catchX + (1-catchUpSpeed) * pos.x; 
+	pos.y = catchUpSpeed * catchY + (1-catchUpSpeed) * pos.y; 
+}

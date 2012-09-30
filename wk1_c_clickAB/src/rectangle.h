@@ -7,18 +7,12 @@ class rectangle {
 
 	public:
 	
-        rectangle();
-	
+        void setup(int r, int g, int b);
 		void draw();
-		void interpolateByPct(float myPct);
-		
+    
 		ofPoint		pos;
-		ofPoint		posa;
-		ofPoint		posb;
-		float		pct;	// what pct are we between "a" and "b"
-		float		shaper;
-	
-	
+        ofColor     rectColor;
+    
 
 };
 

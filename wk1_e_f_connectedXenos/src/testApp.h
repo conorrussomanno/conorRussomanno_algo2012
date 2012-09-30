@@ -20,9 +20,7 @@ class testApp : public ofSimpleApp{
 		void mousePressed(int x, int y, int button);
 		void mouseReleased();
 
-		rectangle myRectangle;
-		float pct;
-	
+		rectangle myRectangle[10];
 };
 
 #endif

@@ -13,22 +13,30 @@ void testApp::setup(){
 	// set background: 
 	
 	ofBackground(30,30,30);
-    flipper = 0;
-    myRectangle.setup(198,246,55);
-    myOtherRectangle.setup(246,55,198);
-    moved = false;
-						// a variable we can alter...
+	
+	
+	// set the "a" and "b" positions of the rectangle...
+	
+	myFirework.posa.x = 0;
+	myFirework.posa.y = 50;
+	myFirework.posb.x = 400;
+	myFirework.posb.y = 50;
+	myFirework.interpolateByPct(0);	// start at 0 pct
+	pct = 0;							// a variable we can alter...
 } 
 
 //--------------------------------------------------------------
 void testApp::update(){
-    moved = false;
+	
+	pct += 0.01f;							// increase by a certain amount
+	if (pct > 1) pct = 0;					// just between 0 and 1 (0% and 100%)
+	myFirework.interpolateByPct(pct);		// go between pta and ptb
+	
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	myRectangle.draw();
-    myOtherRectangle.draw();
+	myFirework.draw();
 }
 
 //--------------------------------------------------------------
@@ -53,16 +61,5 @@ void testApp::mousePressed(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::mouseReleased(){
-    if(flipper==0 && moved==false){
-        myRectangle.pos.x = mouseX;
-        myRectangle.pos.y = mouseY;
-        moved = true;
-        flipper=1;
-    }
-    if(flipper==1 && moved == false){
-        myOtherRectangle.pos.x = mouseX;
-        myOtherRectangle.pos.y = mouseY;
-        moved = true;
-        flipper=0;
-    }
+    firework myFirework ((int)ofRandom(10,40), mouseX, mouseY);
 }

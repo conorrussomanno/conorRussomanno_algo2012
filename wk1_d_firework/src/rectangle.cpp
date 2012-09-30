@@ -2,22 +2,26 @@
 
 
 //------------------------------------------------------------------
-void rectangle::setup(int red, int green, int blue){
-    pos.x = ofGetWidth()/2;
-    pos.y = ofGetHeight()/2;
-    rectColor.r = red;
-    rectColor.g = green;
-    rectColor.b = blue;
-    
+rectangle::rectangle(){
+	shaper = .3;
 }
 
 //------------------------------------------------------------------
 void rectangle::draw() {
 	ofFill();
 	ofSetRectMode(OF_RECTMODE_CENTER); // center around the position
-    ofSetColor(rectColor);
+    ofSetColor(198,246,55);
     ofRect(pos.x, pos.y, 20,20);
 }
 
 
 //------------------------------------------------------------------
+void rectangle::interpolateByPct(float myPct){
+	
+	
+	// powf (2, 3) = 8
+	
+	pct = powf(myPct, shaper);
+	pos.x = (1-pct) * posa.x + (pct) * posb.x;
+	pos.y = (1-pct) * posa.y + (pct) * posb.y;
+}

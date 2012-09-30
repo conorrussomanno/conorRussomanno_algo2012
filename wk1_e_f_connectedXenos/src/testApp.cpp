@@ -12,23 +12,32 @@ void testApp::setup(){
 	
 	// set background: 
 	
+	ofEnableAlphaBlending();
 	ofBackground(30,30,30);
-    flipper = 0;
-    myRectangle.setup(198,246,55);
-    myOtherRectangle.setup(246,55,198);
-    moved = false;
-						// a variable we can alter...
-} 
+	
+	
+	// set the position of the rectangle:
+	for(int i = 0; i < 10; i++){
+        myRectangle[i].pos.x = ofRandom(ofGetWidth());
+        myRectangle[i].pos.y = ofRandom(ofGetHeight());
+    }
+	
+}
 
 //--------------------------------------------------------------
 void testApp::update(){
-    moved = false;
+	myRectangle[0].xenoToPoint(mouseX, mouseY);
+    for(int i = 1; i < 10;i++){
+        myRectangle[i].xenoToPoint(myRectangle[i-1].pos.x, myRectangle[i-1].pos.y);
+    }
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	myRectangle.draw();
-    myOtherRectangle.draw();
+    for(int i = 0; i < 10;i++){
+        myRectangle[i].draw();
+    }
+
 }
 
 //--------------------------------------------------------------
@@ -53,16 +62,4 @@ void testApp::mousePressed(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::mouseReleased(){
-    if(flipper==0 && moved==false){
-        myRectangle.pos.x = mouseX;
-        myRectangle.pos.y = mouseY;
-        moved = true;
-        flipper=1;
-    }
-    if(flipper==1 && moved == false){
-        myOtherRectangle.pos.x = mouseX;
-        myOtherRectangle.pos.y = mouseY;
-        moved = true;
-        flipper=0;
-    }
 }

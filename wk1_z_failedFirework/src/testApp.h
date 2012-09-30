@@ -2,7 +2,7 @@
 #define _TEST_APP
 
 #include "ofMain.h"
-#include "rectangle.h"
+#include "firework.h"
 
 class testApp : public ofSimpleApp{
 
@@ -20,7 +20,6 @@ class testApp : public ofSimpleApp{
 		void mousePressed(int x, int y, int button);
 		void mouseReleased();
 
-		rectangle myRectangle;
 		float pct;
 	
 };

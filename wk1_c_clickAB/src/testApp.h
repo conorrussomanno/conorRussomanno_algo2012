@@ -21,7 +21,9 @@ class testApp : public ofSimpleApp{
 		void mouseReleased();
 
 		rectangle myRectangle;
-		float pct;
+        rectangle myOtherRectangle;
+        int flipper;
+        bool moved;
 	
 };
 

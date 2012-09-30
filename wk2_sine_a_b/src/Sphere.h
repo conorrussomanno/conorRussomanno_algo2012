@@ -10,7 +10,7 @@ public:
     void update();
     void draw();
     
-    float xRot, yRot, zRot, xPos, yPos, zPos, currentR, maxR, numParticles;
+    float xRot, yRot, zRot, xPos, yPos, zPos, currentR, maxR, numParticles, radius;
     float dxRot, dyRot, dzRot;
     
 };
