@@ -6,7 +6,7 @@
 class Sphere {
     
 public:
-    void setup();
+    void setup(int x, int y, int z);
     void update();
     void draw();
     

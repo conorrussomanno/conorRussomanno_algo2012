@@ -19,6 +19,6 @@ class testApp : public ofBaseApp{
 		void windowResized(int w, int h);
     
         Sphere mySphere;
-        Sphere myOtherSphere;
+        float mainPct;
 
 };

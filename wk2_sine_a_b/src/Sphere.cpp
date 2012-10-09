@@ -2,19 +2,19 @@
 #include "testApp.h"
 
 //--------------------------------------------------------------
-void Sphere::setup(){
+void Sphere::setup(int x, int y , int z){
     xRot = 0;
     yRot = 0;
     zRot = 0;
-    dxRot = .05;
-    dyRot = .1;
-    dzRot = .2;
+    dxRot = ofRandom(-.1,.1);
+    dyRot = ofRandom(-.1,.1);
+    dzRot = ofRandom(-.1,.1);
     
-    xPos = 0;
-    yPos = 0;
-    zPos = 0;
+    xPos = x;
+    yPos = y;
+    zPos = z;
     
-    numParticles = 10.0;
+    numParticles = (int)ofRandom(10,20);
     currentR = 0;
     maxR = 300;
     radius = 10;
@@ -40,14 +40,14 @@ void Sphere::update(){
 void Sphere::draw(){
     
     ofPushMatrix();
-    ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
+    ofTranslate(xPos, yPos, zPos);
     ofRotateX(xRot);
     ofRotateY(yRot);
     ofRotateZ(zRot);
     ofSetColor(255, 255, 255);
     for(int i=0; i<numParticles+1; i++){
         ofPushMatrix();
-        ofTranslate(currentR*cos((360/numParticles)*i), currentR*sin((360/numParticles)*i));
+        ofTranslate(currentR*cos((360/numParticles)*i), currentR*sin((360/numParticles)*(PI/180)*i));
         ofRotateX(-xRot);
         ofRotateY(-yRot);
         ofRotateZ(-zRot);

@@ -6,31 +6,39 @@
 void testApp::setup(){
 	
     
-//	ofSetVerticalSync(true);
-    ofSetFrameRate(240);
+	ofSetVerticalSync(true);
+//    ofSetFrameRate(120);
     ofSetBackgroundAuto(false);
 	ofBackground(0,0,0);
 	ofSetCircleResolution(100);
     ofEnableAlphaBlending();
     
-    mySphere.setup(300,100,0);
-    myOtherSphere.setup(700,700,0);
+    mySphere.setup();
+    mainPct = 0;
 
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-    mySphere.update();
-    myOtherSphere.update();
+    mainPct += 0.01f;
+    if (mainPct > 1.5){
+        mySphere.xPos = ofRandom(100, ofGetWidth()-100);
+        mySphere.yPos = ofRandom(100, ofGetHeight()-100);
+        mySphere.color.r = ofRandom(255);
+        mySphere.color.g = ofRandom(255);
+        mySphere.color.b = ofRandom(255);
+        mySphere.yVel = 0;
+        mySphere.outerR = ofRandom(300, 600);
+        mainPct = 0;
+    }
+    mySphere.update(mainPct);
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    ofSetColor(0,0,0,5);
+    ofSetColor(0,0,0,25);
     ofRect(0,0,ofGetWidth(),ofGetHeight());
     mySphere.draw();
-    myOtherSphere.draw();
-    
 }
 
 //--------------------------------------------------------------
