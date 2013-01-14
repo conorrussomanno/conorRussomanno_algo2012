@@ -12,7 +12,7 @@ class strike {
 public:
     
 //    void setup(float _ballRadius, float _maxDTheta, float _minDTheta, float _maxTheta, float _minBoltWidth, float _maxBoltWidth, float _minJumpLength, float _maxJumpLength, float _splitOdds);
-    void strike::setup(float x0I, float y0I, float width0, float theta0, float jumpMin, float jumpMax, float _splitOdds, float _minDTheta, float _maxDTheta, float _maxTheta, int _counter);
+    void setup(float x0I, float y0I, float width0, float theta0, float jumpMin, float jumpMax, float _splitOdds, float _minDTheta, float _maxDTheta, float _maxTheta, int _counter);
     void update();
     void draw();
 
